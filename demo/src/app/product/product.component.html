@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-3" *ngFor="let data of products; index as i">
+        <div class="card" style="width: 18rem;">
+            <div class=" carousel slide ">
+                <div class="carousel-inner ">
+                    <div *ngFor="let c of data.img; " class="carousel-item active my-img ">
+                        <img [src]="c " class="d-block w-100 " alt="... ">
+                    </div>
+                </div>
+                <button class="carousel-control-prev " type="button " [attr.data-bs-target]=" '#'+data.id " data-bs-slide="prev ">
+                    <span class="carousel-control-prev-icon " aria-hidden="true "></span>
+                    <span class="visually-hidden ">Previous</span>
+                </button>
+                <button class="carousel-control-next " type="button " [attr.data-bs-target]=" '#'+data.id " data-bs-slide="next ">
+                    <span class="carousel-control-next-icon " aria-hidden="true "></span>
+                    <span class="visually-hidden ">Next</span>
+                </button>
+            </div>
+            <div class="card-body ">
+                <h4>{{data.price}} <span class="text-decoration-line-through fs-5 ">{{data.nonprice}}</span> <span style="font-size: 12px; " class="badge text-bg-warning float-end ; " [class.isInvi]="data.sell ">Best seller</span></h4>
+                <h5 class="card-title ">{{data.name}}</h5>
+                <p class="card-text ">{{data.description}}</p>
+                <h5>Color</h5>
+                <div class="circleContent ">
+                    <div *ngFor="let color of data.color; index as i ">
+                        <div class="circle " [ngStyle]="{ 'background-color': selectedColors[data.id]===color ? 'black' : color } " (click)="selectColor(color, data.id) " [attr.data-bs-target]=" '#'+data.id " [attr.data-bs-slide-to]="i "></div>
+                    </div>
+                </div>
+                <h5>size(cm)</h5>
+                <div class="circleContent ">
+                    <div *ngFor="let size of data.size; index as i ">
+                        <button style="padding: 5px " class="border border-black rounded-pill size " [ngStyle]="{ 'background-color': selectedSizes[data.id]===size ? 'pink' : 'gray' } " (click)="selectSize(size, data.id) ">{{ size }}</button>
+                    </div>
+                </div>
+                <h5>Quantity :{{ selectedQuantities[data.id] || 0 }} <span style="font-size: 12px; " class="badge text-bg-success ; " [class.isInvi]="data.Invi ">In stock</span></h5>
+                <div style="margin-bottom: 10px; ">
+                    <input class="quantity " type="number " value="{{ selectedQuantities[data.id] || 0 }} " min="0 " max="10 " (change)="qttchange($event, data.id) ">
+                </div>
+
+                <button class="btn btn-secondary ms-4 me-4 " (click)="onSelect(data) ">Details</button>
+                <a href="# " class="btn btn-primary ">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>

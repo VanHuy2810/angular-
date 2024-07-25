@@ -1,0 +1,65 @@
+.my-img img {
+  height: 250px;
+  width: 100%;
+}
+
+.circleContent {
+  display: flex;
+  /* Sử dụng flexbox để các phần tử con trong container được căn chỉnh trên cùng một dòng */
+  flex-wrap: nowrap;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.size {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.quantity {
+  width: 50px;
+}
+
+.isInvi {
+  display: none;
+}
+
+.isSelect {
+  border: 3px solid black;
+}
+
+.isC {
+  background-color: red;
+}
+
+.quantity {
+  width: 100px;
+  /* Độ rộng của input */
+  height: 40px;
+  /* Độ cao của input */
+  padding: 10px;
+  /* Khoảng cách giữa nội dung và viền */
+  font-size: 16px;
+  /* Kích thước font chữ */
+  border: 2px solid #ccc;
+  /* Viền input */
+  border-radius: 5px;
+  /* Bo tròn góc */
+  outline: none;
+  /* Loại bỏ đường viền focus */
+  transition: border-color 0.2s;
+  /* Hiệu ứng khi focus */
+}
+
+.quantity:focus {
+  border-color: #007bff;
+  /* Màu viền khi focus */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  /* Hiệu ứng shadow khi focus */
+}
